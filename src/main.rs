@@ -4,9 +4,8 @@ use std::process;
 
 fn main() {
     // collect all the args passed on the command line into an iterable
-    let args: Vec<String> = env::args().collect();
     // store/save the values in the args
-    let config = Config::new(&args).unwrap_or_else(|err| {
+    let config = Config::new(env::args()).unwrap_or_else(|err| {
         eprintln!("Problem parsing arguments: {}", err);
         process::exit(1);
     });
