@@ -7,13 +7,13 @@ fn main() {
     let args: Vec<String> = env::args().collect();
     // store/save the values in the args
     let config = Config::new(&args).unwrap_or_else(|err| {
-        println!("Problem parsing arguments: {}", err);
+        eprintln!("Problem parsing arguments: {}", err);
         process::exit(1);
     });
 
 
     if let Err(err) = cligrep::run(config) {
-        println!("Application error occurred {}", err);
+        eprintln!("Application error occurred {}", err);
 
         process::exit(1);
     }
